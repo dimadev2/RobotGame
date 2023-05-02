@@ -2,12 +2,12 @@ package Robot;
 
 public class Leg extends BodyPart implements BodyPartInterface {
     {
-        Level = 5;      // Healing
+        Level = 1;      // Healing
     }
 
     @Override
     public int CalculateValue(int value) {
-        return Level * value / 2;
+        return Level * value;
     }
 
     @Override

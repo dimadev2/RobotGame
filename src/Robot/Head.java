@@ -2,17 +2,17 @@ package Robot;
 
 public class Head extends BodyPart implements BodyPartInterface{
     {
-        Level = 2;     // Accuracy
+        Level = 1;     // Accuracy
     }
 
     @Override
     public int CalculateValue(int value) {
-        return value * Level;
+        return value * Level / 3;
     }
 
     @Override
     public void Upgrade(int levels) {
-        Level += 3 * levels;
+        Level += levels;
     }
 
     @Override

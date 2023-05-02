@@ -2,17 +2,17 @@ package Robot;
 
 public class Hand extends BodyPart implements BodyPartInterface{
     {
-        Level = 5;     // Bonus damage
+        Level = 1;     // Bonus damage
     }
 
     @Override
     public int CalculateValue(int value) {
-        return value * (Level / 100 + 1);
+        return value * (Level / 10 + 1);
     }
 
     @Override
     public void Upgrade(int levels) {
-        Level += 5 * levels;
+        Level += levels;
     }
 
     @Override

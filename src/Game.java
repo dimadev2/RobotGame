@@ -1,3 +1,4 @@
+import Enemies.Boss;
 import Enemies.Enemy;
 import Robot.Body;
 
@@ -8,7 +9,8 @@ import static java.lang.Runtime.getRuntime;
 
 class Game {
     private Body Robot = new Body();
-    private Enemy e = new Enemy();
+    private Enemy e = new Enemy(10, 20);
+    private int EnemyCounter = 1;
     private int Coins = 0;
     private Scanner in = new Scanner(System.in);
 
@@ -17,7 +19,11 @@ class Game {
     }
 
     private int Update() {
-        System.out.println("You meet the enemy:");
+        if (e instanceof Boss)
+            System.out.println("You meet the Boss:");
+        else
+            System.out.println("You meet the Enemy:");
+
         e.PrintInfo();
         System.out.println();
         System.out.println("Your robot:");
@@ -46,8 +52,19 @@ class Game {
         if (choice == 1) {
             if (e.GetDamage(Robot.GiveDamage()) == 1) {
                 System.out.println("Enemy defeated! Gain 1 coin");
-                e = new Enemy();
-                Coins++;
+                EnemyCounter++;
+
+                if (e instanceof Boss) {
+                    Coins += 10;
+                }
+                else {
+                    Coins += 2;
+                }
+
+                if (EnemyCounter % 20 == 0)
+                    e = new Boss(60 * (EnemyCounter / 20 + 1), 100 * (EnemyCounter / 20 + 1));
+                else
+                    e = new Enemy(10 * (EnemyCounter / 20 + 1), 20 * (EnemyCounter / 20 + 1));
             }
         }
         else if (choice == 2) {
