@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Game {
     private Body Robot = new Body();
-    private Enemy e = new Enemy(10, 20);
+    private Enemy e = GenerateEnemy(10, 5);
     private int EnemyCounter = 1;
     private boolean IsBoss = false;
     private int Coins = 0;
@@ -43,15 +43,11 @@ public class Game {
                 }
 
                 if (EnemyCounter % 20 == 0) {
-                    int health = (int)(Math.random() * 20) + 80;
-                    int damage = (int)(Math.random() * 20) + 50;
-                    e = new Enemy(damage * (EnemyCounter / 20 + 1), health * (EnemyCounter / 20 + 1));
+                    e = GenerateEnemy(80, 50);
                     IsBoss = true;
                 }
                 else {
-                    int health = (int)(Math.random() * 15) + 10;
-                    int damage = (int)(Math.random() * 10) + 5;
-                    e = new Enemy(damage * (EnemyCounter / 20 + 1), health * (EnemyCounter / 20 + 1));
+                    e = GenerateEnemy(10, 5);
                     IsBoss = false;
                 }
             }
@@ -159,5 +155,15 @@ public class Game {
         answer += "8 - Upgrade Legs (10 coins)\n";
 
         return answer;
+    }
+
+    private Enemy GenerateEnemy(int health, int damage) {
+        int randomHealth = (int)(Math.random() * 20) + health;
+        int randomDamage = (int)(Math.random() * 20) + damage;
+        return new Enemy(randomDamage * koef(), randomHealth * koef());
+    }
+
+    private int koef() {
+        return EnemyCounter / 20 + 1;
     }
 }

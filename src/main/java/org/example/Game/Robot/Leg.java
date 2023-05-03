@@ -1,4 +1,4 @@
-package Game.Robot;
+package org.example.Game.Robot;
 
 import Game.Robot.BodyPart;
 import Game.Robot.BodyPartInterface;
@@ -10,7 +10,7 @@ public class Leg extends BodyPart implements BodyPartInterface {
 
     @Override
     public int CalculateValue(int value) {
-        return Level * value;
+        return (int)(Level * value * 1.2);
     }
 
     @Override
