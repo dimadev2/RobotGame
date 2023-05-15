@@ -1,4 +1,4 @@
-package Game.Robot;
+package org.example.Game.Robot;
 
 import Game.Robot.BodyPart;
 import Game.Robot.BodyPartInterface;

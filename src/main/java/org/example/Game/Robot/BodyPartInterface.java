@@ -1,4 +1,4 @@
-package Game.Robot;
+package org.example.Game.Robot;
 
 public interface BodyPartInterface {
     int CalculateValue(int value);

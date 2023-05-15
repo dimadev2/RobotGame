@@ -8,25 +8,25 @@ public class Body {
     private int HeadsCapacity = 3;
     private int HandsCapacity = 3;
     private int LegsCapacity = 3;
-    List<Game.Robot.Head> Heads = new ArrayList<>();
-    List<Game.Robot.Hand> Hands = new ArrayList<>();
-    List<Game.Robot.Leg> Legs = new ArrayList<>();
+    List<Head> Heads = new ArrayList<>();
+    List<Hand> Hands = new ArrayList<>();
+    List<Leg> Legs = new ArrayList<>();
 
 
     private int Health = 100;
-    private int HealingValue = 25;
+    final private int HealingValue = 25;
 
-    private int BasicDamage = 10;
+    final private int BasicDamage = 10;
 
     public Body() {
-        Heads.add(new Game.Robot.Head());
-        Hands.add(new Game.Robot.Hand());
-        Legs.add(new Game.Robot.Leg());
+        Heads.add(new Head());
+        Hands.add(new Hand());
+        Legs.add(new Leg());
     }
 
     public int AddHead() {
         if (Heads.size() < HeadsCapacity) {
-            Heads.add(new Game.Robot.Head());
+            Heads.add(new Head());
             return 0;
         }
         return 1;
@@ -34,7 +34,7 @@ public class Body {
 
     public int AddHand() {
         if (Hands.size() < HandsCapacity) {
-            Hands.add(new Game.Robot.Hand());
+            Hands.add(new Hand());
             return 0;
         }
         return 1;
@@ -42,7 +42,7 @@ public class Body {
 
     public int AddLeg() {
         if (Legs.size() < LegsCapacity) {
-            Legs.add(new Game.Robot.Leg());
+            Legs.add(new Leg());
             return 0;
         }
         return 1;
@@ -57,10 +57,10 @@ public class Body {
 
     public int GiveDamage() {
         int copy = BasicDamage;
-        for (Game.Robot.Head bp: Heads) {
+        for (Head bp: Heads) {
             copy = bp.CalculateValue(copy);
         }
-        for (Game.Robot.Hand bp: Hands) {
+        for (Hand bp: Hands) {
             copy = bp.CalculateValue(copy);
         }
 
@@ -69,7 +69,7 @@ public class Body {
 
     public void Healing() {
         int k = 1;
-        for (Game.Robot.Leg l: Legs) {
+        for (Leg l: Legs) {
             k = l.CalculateValue(k);
         }
 
@@ -80,19 +80,19 @@ public class Body {
     }
 
     public void UpgradeHeads() {
-        for (Game.Robot.Head h: Heads) {
+        for (Head h: Heads) {
             h.Upgrade(1);
         }
     }
 
     public void UpgradeHands() {
-        for (Game.Robot.Hand h: Hands) {
+        for (Hand h: Hands) {
             h.Upgrade(1);
         }
     }
 
     public void UpgradeLegs() {
-        for (Game.Robot.Leg h: Legs) {
+        for (Leg h: Legs) {
             h.Upgrade(1);
         }
     }
@@ -100,13 +100,13 @@ public class Body {
     public String PrintInfo() {
         String answer = "";
 
-        for (Game.Robot.Head h: Heads) {
+        for (Head h: Heads) {
             answer += h.PrintLevel();
         }
-        for (Game.Robot.Hand h: Hands) {
+        for (Hand h: Hands) {
             answer += h.PrintLevel();
         }
-        for (Game.Robot.Leg l: Legs) {
+        for (Leg l: Legs) {
             answer += l.PrintLevel();
         }
         answer += "Health: " + Health;

@@ -2,7 +2,7 @@ package org.example.Game;
 
 import org.example.Game.Enemies.Enemy;
 import org.example.Game.Robot.Body;
-import org.example.Main;
+import org.example.Game.Robot.*;
 
 
 import java.util.Scanner;
@@ -32,15 +32,16 @@ public class Game {
 
         if (choice == 1) {
             if (e.GetDamage(Robot.GiveDamage()) == 1) {
-                answer += "Enemy defeated! Gain 1 coin\n";
-                EnemyCounter++;
-
                 if (IsBoss) {
+                    answer += "Boss defeated! Gain 10 coins\n";
                     Coins += 10;
                 }
                 else {
+                    answer += "Enemy defeated! Gain 2 coins\n";
                     Coins += 2;
                 }
+
+                EnemyCounter++;
 
                 if (EnemyCounter % 20 == 0) {
                     e = GenerateEnemy(80, 50);
@@ -142,6 +143,7 @@ public class Game {
         answer += "\n";
 
         answer += ("Coins: " + Coins + "\n");
+        answer += ("Enemies killed: " + (EnemyCounter - 1) + "\n");
 
         answer += "\n";
         answer += "What would you do?\n";
